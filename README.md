@@ -2,11 +2,12 @@
 
 Sample Spring Boot App using the Azure Storage services and package as Docker image Container Google jib.
 
-Azure provides Spring Boot starter libraries , under the hood these libraries do use Azure SDK and does package the app  seamless for integration with any Spring Boot App. One of the challenges i did face is these starter libraries don't use the latest version of Azure SDK always . 
-
-Also this spring boot app is packaged as Docker image without any Docker dependencies on the build machine . Using the Google jib maven plugin
 
 This project should help to easily understand to build your own Spring Boot app directly using Azure SDK's and package as Docker image.
+
+Azure provides Spring Boot starter libraries , under the hood these libraries do use Azure SDK and package the app  seamlessly. One of the challenges i did face is these starter libraries don't use the latest version of Azure SDK always . 
+
+This example package the spring boot app as Docker image without any Docker dependencies on the build machine , Using the Google jib maven plugin. Post package pushes to the Docker repo . After push this can be configured to run using Azure App Services in few minutes.
 
 
 
