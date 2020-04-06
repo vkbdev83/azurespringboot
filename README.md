@@ -1,6 +1,6 @@
 # azurespringboot
 
-Sample Spring Boot App using the Azure Storage services and deployed as Azure App Services Container using jib.
+Sample Spring Boot App using the Azure Storage services and package as Docker image Container Google jib.
 
 Azure provides Spring Boot starter libraries , under the hood these libraries do use Azure SDK and does package the app  seamless for integration with any Spring Boot App. One of the challenges i did face is these starter libraries don't use the latest version of Azure SDK always . 
 
