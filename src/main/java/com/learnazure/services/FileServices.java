@@ -1,10 +1,14 @@
 package com.learnazure.services;
 
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Path;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.azure.storage.blob.BlobClient;
 import com.azure.storage.blob.BlobContainerClient;
@@ -33,9 +37,35 @@ public class FileServices {
 		// Upload the blob
 		blobClient.uploadFromFile(filePath.toString());
 
+	
 		return "Success";
 	}
 	
+	
+	public String uploadFileToBlob(MultipartFile file) throws IOException {
+
+		System.out.println("Intiating Upload" + CONNECTION_STRING + CONTAINER_NAME );
+		
+		String status = "Failure";
+		
+		try(InputStream fis = file.getInputStream()){
+			
+			// Get a reference to a blob
+			BlobClient blobClient = getBlobClient(file.getOriginalFilename());
+
+			System.out.println("\nUploading to Blob storage as blob:\n\t" + blobClient.getBlobUrl());
+
+			// Upload the blob
+			blobClient.upload(fis, file.getSize(), true);
+			
+			status = "Success";
+			
+		}
+
+
+
+		return status;
+	}
 	
 	private BlobClient getBlobClient(String fileName) {
 		
